@@ -108,8 +108,8 @@ export class SistemaAudio {
     this.fontesMotor.push(fonte);
   }
 
+  // Atualiza pitch e filtros do motor conforme o estado atual do voo.
   atualizar(estado) {
-    // Atualiza pitch e filtros do motor conforme o estado atual do voo.
     if (!this.iniciado || !this.ctx) return;
     this.ctx.resume?.();
 
