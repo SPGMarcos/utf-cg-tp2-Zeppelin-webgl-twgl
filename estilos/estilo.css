@@ -1,0 +1,214 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #05070c;
+  color: #eef7ff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 52%, rgba(0, 0, 0, 0.42) 100%),
+    linear-gradient(90deg, rgba(255, 150, 70, 0.05), transparent 35%, transparent 65%, rgba(60, 190, 255, 0.06));
+  mix-blend-mode: screen;
+}
+
+.oculto {
+  display: none !important;
+}
+
+#tela-cg {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  outline: none;
+}
+
+.painel {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  display: none;
+  gap: 7px;
+  width: min(560px, calc(100vw - 32px));
+  padding: 13px 15px;
+  border: 1px solid rgba(146, 229, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(5, 14, 22, 0.76);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+  line-height: 1.32;
+}
+
+body.simulacao-iniciada .painel {
+  display: grid;
+}
+
+.painel strong {
+  font-size: 18px;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.painel-status {
+  color: #c8def0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(146, 229, 255, 0.16);
+}
+
+.painel-status b {
+  color: #b8dcf5;
+}
+
+.painel-linha {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: start;
+  color: #f0f7ff;
+}
+
+.painel-linha b {
+  color: #b8dcf5;
+  font-weight: 700;
+}
+
+.painel-valor {
+  min-width: 0;
+  white-space: pre-line;
+}
+
+.tela-inicio {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, rgba(4, 8, 18, 0.96), rgba(2, 4, 10, 0.98)),
+    #040512;
+  backdrop-filter: blur(4px);
+  z-index: 3;
+}
+
+.tela-inicio.oculto {
+  display: none;
+}
+
+.menu-inicio {
+  width: min(740px, calc(100vw - 38px));
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 5vw, 38px) 34px;
+  border: 1px solid rgba(52, 172, 186, 0.36);
+  border-radius: 28px;
+  background: rgba(4, 20, 39, 0.88);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.menu-conteudo {
+  display: grid;
+  gap: 16px;
+  text-align: center;
+  color: #b8dcf5;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.menu-conteudo strong {
+  color: #eef7ff;
+  font-size: clamp(36px, 6vw, 46px);
+  letter-spacing: 10px;
+  line-height: 1.1;
+}
+
+.menu-conteudo > span {
+  margin: 10px 0 2px;
+}
+
+.menu-conteudo p {
+  margin: 10px 0 12px;
+  color: #a8cdee;
+  font-size: 16px;
+}
+
+.menu-conteudo button {
+  width: min(400px, 100%);
+  justify-self: center;
+  min-height: 60px;
+  padding: 13px 18px;
+  border: 1px solid rgba(183, 98, 224, 0.58);
+  border-radius: 16px;
+  background: linear-gradient(90deg, rgba(98, 49, 148, 0.96), rgba(65, 26, 92, 0.96));
+  color: #eef7ff;
+  font: 800 20px Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.26);
+}
+
+.menu-conteudo .botao-secundario {
+  min-height: 52px;
+  margin-top: -6px;
+  border-color: rgba(52, 172, 186, 0.52);
+  background: rgba(7, 29, 55, 0.92);
+  font-size: 18px;
+}
+
+.menu-conteudo button:hover,
+.menu-conteudo button:focus-visible {
+  background: linear-gradient(90deg, rgba(116, 57, 176, 1), rgba(80, 33, 112, 1));
+  outline: none;
+}
+
+.menu-conteudo .botao-secundario:hover,
+.menu-conteudo .botao-secundario:focus-visible {
+  background: rgba(12, 50, 82, 0.98);
+}
+
+.menu-conteudo button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.menu-info {
+  display: grid;
+  gap: 8px;
+  margin-top: 2px;
+  padding: 22px 20px;
+  border: 1px solid rgba(52, 172, 186, 0.26);
+  border-radius: 20px;
+  background: rgba(7, 29, 55, 0.72);
+  color: #eef7ff;
+}
+
+.menu-info strong {
+  color: #d7fff5;
+  font-size: 19px;
+  letter-spacing: 3px;
+}
+
+.menu-info span {
+  font-size: 16px;
+}
+
+.aviso {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(4, 7, 13, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 4;
+}
+
+.aviso.oculto {
+  display: none;
+}

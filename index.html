@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>⚔️ Vinland Saga - WebGL/TWGL</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./estilos/estilo.css" />
+    <script src="./scripts/vendor/twgl-full.js"></script>
+  </head>
+  <body>
+    <canvas id="tela-cg" aria-label="Cena 3D WebGL de uma cidade futurista com navio controlavel"></canvas>
+
+    <aside class="painel">
+      <strong>⚔️ Vinland Saga</strong>
+      <span class="painel-linha painel-status"><b>Status:</b><span id="status-camera" class="painel-valor">Câmera 1 - Aérea | Alt. 0,0 | Dist. 0<br>Phong Ligada | Fog Desligada</span></span>
+      <span class="painel-linha"><b>Movimento:</b><span class="painel-valor">WASD: Mover | Q/E: Altitude | P: Pousar/Decolar</span></span>
+      <span class="painel-linha"><b>Ações:</b><span class="painel-valor">Câmeras: 1  | 2 | 3 | C: Trocar lado (Câmera 2) | Scroll: Zoom (Câmera 1) | L: Phong | N: Fog</span></span>
+    </aside>
+
+    <section id="tela-inicio" class="tela-inicio" aria-label="Menu inicial">
+      <div class="menu-inicio">
+        <div class="menu-conteudo" id="menu-principal">
+          <strong>⚔️ Vinland Saga</strong>
+          <span>Simulação de navio viking voador em uma cidade futurista</span>
+          <button id="botao-iniciar" type="button">Iniciar Simulação</button>
+          <button id="botao-reiniciar" class="botao-secundario oculto" type="button">Retornar ao Inicio</button>
+          <p>WASD: Mover · Q/E: Altitude · P: Pousar/Decolar</p>
+          <div class="menu-info">
+            <strong>CONTROLES PRINCIPAIS</strong>
+            <span>Câmeras: 1 Aérea · 2 Cinematográfica · 3 Cabine</span>
+            <span>C: Trocar lado (Câmera 2) · Scroll: Zoom (Câmera 1)</span>
+            <span>L: Phong · N: Fog</span>
+            <span>Aproxime-se do ZepellinPorto ou de um heliporto urbano para pousar.</span>
+            <span>ESC volta para esta tela inicial.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="aviso-carregamento" class="aviso oculto">Carregando shaders e texturas...</div>
+
+    <script type="module" src="./scripts/main.js?v=revisao-cidade-low-poly"></script>
+  </body>
+</html>
