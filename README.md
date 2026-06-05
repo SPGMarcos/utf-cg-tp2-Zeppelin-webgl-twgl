@@ -102,6 +102,8 @@ http://127.0.0.1:5500/
 | P     | Pousar ou decolar                 |
 | Setas | Olhar ao redor no cockpit         |
 
+O pouso também acontece automaticamente quando o navio permanece por 2 segundos sobre o ZeppelinPorto.
+
 
 
 ## Recursos Implementados
@@ -167,6 +169,38 @@ http://127.0.0.1:5500/
 ✔ Áudio ambiente
 
 ✔ Som dinâmico do motor
+
+
+
+### Itens Adicionais Implementados
+
+Com base na lista de funcionalidades extras proposta para o trabalho, este projeto implementa:
+
+✔ Skybox espacial
+
+✔ Modelos no formato OBJ
+
+✔ Fontes de luz pontuais
+
+✔ Mais tipos de objetos compondo o cenário
+
+✔ Efeitos de partículas
+
+✔ Neblina (Fog), ativável pela tecla `N`
+
+✔ Normal Mapping
+
+✔ Cabine com material transparente
+
+✔ Sistema de pouso automático, ativável pela tecla `P` ou ao permanecer 2 segundos sobre o ZeppelinPorto
+
+✔ Terceira câmera em modo cockpit, ativável pela tecla `3`
+
+✔ Controle de olhar da câmera interna pelas setas do teclado
+
+✔ Música e áudio ambiente
+
+✔ Ideia adicional: colisão com edifícios e estruturas da cidade
 
 
 
