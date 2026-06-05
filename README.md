@@ -314,10 +314,7 @@ Utilizadas para formar um cubemap espacial ao redor da cena.
 * Sons de motor e efeitos de zepelim obtidos através do Pixabay:
   https://pixabay.com/sound-effects/search/zeppelin/
 
-* Trilha sonora utilizada no ambiente:
-  Chubina (Super Slowed)
-
-* Fonte da trilha sonora:
+* Trilha sonora utilizada no ambiente (Chubina (Super Slowed)):
   https://www.youtube.com/watch?v=tcFbrTvR4rU
 
 ### Assets Utilizados na Cena
