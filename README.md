@@ -269,29 +269,6 @@ Utilizado para simular fumaça e efeitos atmosféricos do navio.
 
 Foi implementado um sistema de colisão baseado em AABB (Axis-Aligned Bounding Boxes), impedindo que o navio atravesse prédios, hangares e outras estruturas da cidade.
 
-
-
-## Destaques do Projeto
-
-* Cidade futurista procedural gerada a partir de múltiplos kits 3D
-* Navio voador steampunk controlável
-* Modelagem hierárquica completa do navio
-* Sistema de pouso automático no ZeppelinPorto
-* Heliporto urbano para pouso manual
-* Múltiplas câmeras (aérea, cinematográfica e cockpit)
-* Áudio ambiente e motor dinâmico
-* Sistema de partículas para fumaça
-* Iluminação Phong com múltiplas luzes
-* Luzes neon emissivas
-* Neblina dinâmica (Fog)
-* Colisão por AABB com prédios e estruturas
-* Skybox espacial baseada em cubemap
-* Normal Mapping
-* Carregamento modular de modelos OBJ
-* Suporte para expansão com novos assets e cenários
-
-
-
 ## Créditos e Recursos Utilizados
 
 Este projeto utiliza modelos 3D, texturas, áudio e materiais de terceiros para fins acadêmicos.
