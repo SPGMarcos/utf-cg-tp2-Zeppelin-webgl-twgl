@@ -1,4 +1,4 @@
-# Vinland Saga - Barco Viking na Cidade Futurista
+# ⚔️ Vinland Saga - Barco Viking na Cidade Futurista
 
 Projeto desenvolvido para a disciplina de Computação Gráfica utilizando WebGL 2.0 e TWGL.js.
 
