@@ -149,7 +149,7 @@ projeto/
 │   │   ├── Ruas/
 │   │   ├── Veiculos/
 │   │   ├── Zeppelin/
-│   │   ├── ZeppelinPorto/
+│   │   └── ZeppelinPorto/
 │   │
 │   └── skybox/
 │       └── envmap_interstellar/
@@ -296,5 +296,3 @@ Os assets utilizados pertencem aos seus respectivos autores e foram empregados e
 Os pacotes disponibilizados pela Kenney são distribuídos sob licença CC0, permitindo uso livre em projetos acadêmicos e comerciais.
 
 A textura Interstellar Skybox é distribuída sob licença CC-BY 3.0, exigindo atribuição ao autor original.
-
-
