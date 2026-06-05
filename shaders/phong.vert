@@ -1,4 +1,9 @@
 #version 300 es
+/*
+  Vertex shader principal.
+  Transforma cada vertice para o espaco de mundo e envia normal, UV e tangente
+  para o fragment shader calcular textura, iluminacao e normal map.
+*/
 
 in vec4 position;
 in vec3 normal;

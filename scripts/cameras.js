@@ -1,3 +1,8 @@
+/*
+  Sistema de cameras da simulacao.
+  Este modulo calcula as tres cameras disponiveis: aerea, cinematografica
+  e cabine, sempre acompanhando o navio de forma suavizada.
+*/
 import { somar } from "./util/matematica.js";
 
 export class Cameras {
@@ -14,9 +19,9 @@ export class Cameras {
     this.referenciaVoo = null;
   }
 
+  // Interpolacao exponencial deixa a camera cinematografica sem atrasar demais o controle.
   interpolarVetor(atual, alvo, rigidez) {
     if (!atual) return [...alvo];
-    // Interpolacao exponencial deixa a camera cinematografica sem atrasar demais o controle.
     const t = 1 - Math.exp(-rigidez);
     return [
       atual[0] + (alvo[0] - atual[0]) * t,
@@ -24,7 +29,8 @@ export class Cameras {
       atual[2] + (alvo[2] - atual[2]) * t,
     ];
   }
-
+  
+  // Escolhe a camera ativa e calcula as matrizes de visao e projecao.
   calcular(gl, veiculo, controles, tempo = 0) {
     const m4 = twgl.m4;
     const aspecto = gl.canvas.clientWidth / Math.max(1, gl.canvas.clientHeight);

@@ -1,3 +1,8 @@
+/*
+  Entrada do usuario.
+  Este modulo registra teclado e roda do mouse, armazenando o estado usado
+  pelo navio, pelas cameras e pelos comandos de luz, fog e pouso.
+*/
 export class Controles {
   constructor(canvas) {
     this.teclas = new Set();
@@ -23,6 +28,7 @@ export class Controles {
     this.eventos = [];
   }
 
+  // Trata comandos instantaneos e registra teclas que continuam pressionadas.
   aoPressionar(e) {
     const k = e.key.toLowerCase();
     if (k.startsWith("arrow")) e.preventDefault();
@@ -38,10 +44,10 @@ export class Controles {
     if (k === "n") this.eventos.push("fog");
   }
 
+  // As setas ficam registradas em estado e a camera do cockpit responde a cada frame.
   atualizar(dt) {
     if (this.camera !== 3) return;
 
-    // As setas ficam registradas em estado e a camera do cockpit responde a cada frame.
     const yawVelocidade = 1.65;
     const pitchVelocidade = 1.15;
     if (this.teclas.has("arrowleft")) this.olharCockpit.yaw += yawVelocidade * dt;
@@ -57,6 +63,7 @@ export class Controles {
     return eventos;
   }
 
+  // Converte WASD/QE nos eixos de movimento usados pelo navio.
   eixoMovimento() {
     let frente = 0;
     let lado = 0;

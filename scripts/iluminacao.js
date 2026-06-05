@@ -1,3 +1,8 @@
+/*
+  Sistema de iluminacao da cena.
+  Este modulo controla luz direcional, luzes pontuais, emissivos e parametros
+  de neblina usados pelo shader Phong.
+*/
 export class SistemaIluminacao {
   constructor() {
     this.luzesPontuais = [];
@@ -24,6 +29,7 @@ export class SistemaIluminacao {
     this.fogLigado = !this.fogLigado;
   }
 
+  // Atualiza a luz do ambiente e seleciona as luzes pontuais mais importantes.
   atualizar(tempo, postes, luzesVeiculo) {
     const ciclo = (Math.sin(tempo * 0.055) + 1) * 0.5;
     const anguloSol = tempo * 0.025;

@@ -1,5 +1,10 @@
+/*
+  Definicao dos materiais da simulacao.
+  Este modulo associa cores, texturas, brilho, transparencia e emissivos aos
+  nomes de materiais usados pelos objetos da cidade e do navio.
+*/
 export function criarMateriais(texturas) {
-  // Materiais concentrados aqui evitam repetir uniforms e facilitam trocar o estilo visual.
+  // Centraliza os materiais para facilitar ajustes no estilo visual.
   return {
     chao: { cor: [0.50, 0.66, 0.46, 1], textura: texturas.gramaLowPoly, shininess: 8, especular: 0.03 },
     gramaUrbana: { cor: [0.48, 0.62, 0.44, 1], textura: texturas.gramaLowPoly, shininess: 7, especular: 0.02 },

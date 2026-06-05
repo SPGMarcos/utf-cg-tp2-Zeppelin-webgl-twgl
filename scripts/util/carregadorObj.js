@@ -1,4 +1,10 @@
+/*
+  Carregador simples de arquivos OBJ.
+  Este modulo transforma o texto de um modelo OBJ em arrays de vertices,
+  normais, coordenadas de textura e indices prontos para o TWGL/WebGL.
+*/
 export function carregarOBJ(texto) {
+  // O OBJ separa indices de posicao, textura e normal; aqui eles viram um vertice unico.
   const posicoes = [[0, 0, 0]];
   const uvs = [[0, 0]];
   const normais = [[0, 1, 0]];
@@ -24,6 +30,7 @@ export function carregarOBJ(texto) {
     if (partes[0] === "vn") normais.push(partes.slice(1, 4).map(Number));
     if (partes[0] === "f") {
       const ids = partes.slice(1).map(vertice);
+      // Divide faces com mais de tres vertices em triangulos.
       for (let i = 1; i < ids.length - 1; i++) saida.indices.push(ids[0], ids[i], ids[i + 1]);
     }
   }

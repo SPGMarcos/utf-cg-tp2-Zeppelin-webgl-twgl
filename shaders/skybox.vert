@@ -1,4 +1,8 @@
 #version 300 es
+/*
+  Vertex shader da skybox.
+  Desenha o cubo de fundo sem deslocamento da camera para simular um ceu distante.
+*/
 precision highp float;
 
 in vec4 position;

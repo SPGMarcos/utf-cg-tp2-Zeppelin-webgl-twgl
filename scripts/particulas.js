@@ -1,3 +1,8 @@
+/*
+  Sistema de particulas da fumaca do navio.
+  Este modulo cria, atualiza e desenha pontos transparentes que saem da traseira
+  do veiculo, simulando o rastro durante o voo.
+*/
 export class SistemaParticulas {
   constructor(gl, programa, maximo = 420) {
     this.gl = gl;
@@ -26,6 +31,7 @@ export class SistemaParticulas {
       ["tamanho", this.buffers.tamanho, 1, this.tamanhos.byteLength],
     ];
 
+    // Prepara os buffers que guardam posicao, cor e tamanho das particulas.
     for (const [nome, buffer, componentes, bytes] of atributos) {
       const loc = gl.getAttribLocation(this.programa.program, nome);
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -37,6 +43,7 @@ export class SistemaParticulas {
   }
 
   emitir(posicao, velocidade, cor, vida, tamanho) {
+    // Mantem o limite maximo de particulas removendo a mais antiga quando necessario.
     if (this.particulas.length >= this.maximo) this.particulas.shift();
     this.particulas.push({
       p: [...posicao],
@@ -53,6 +60,7 @@ export class SistemaParticulas {
     const tras = [-Math.sin(yaw), 0, -Math.cos(yaw)];
     const lateral = [Math.cos(yaw), 0, -Math.sin(yaw)];
     const base = navio.posicao;
+    // Emite fumaca atras do navio, acompanhando a direcao em que ele esta virado.
     for (let i = 0; i < 4; i++) {
       const lado = i % 2 === 0 ? 1 : -1;
       const origem = [
@@ -80,6 +88,7 @@ export class SistemaParticulas {
   desenhar(view, projection) {
     const gl = this.gl;
     const total = this.particulas.length;
+    // Diminui a opacidade conforme a particula chega ao fim da vida.
     for (let i = 0; i < total; i++) {
       const p = this.particulas[i];
       const a = Math.max(0, p.vida / p.vidaInicial);

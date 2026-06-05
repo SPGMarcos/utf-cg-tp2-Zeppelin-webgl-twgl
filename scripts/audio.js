@@ -1,3 +1,8 @@
+/*
+  Sistema de audio da simulacao.
+  Este modulo inicializa a musica, o som do motor e um som sutil de vento,
+  ajustando os efeitos de acordo com velocidade e altitude do navio.
+*/
 const CAMINHO_MUSICA = "./assets/audio/Chubina (Slowed) - East Duo (youtube).mp3";
 const CAMINHO_MOTOR = "./assets/audio/freesound_community-zeppelin-motor-75040.mp3";
 const VOLUME_MUSICA = 0.030;
@@ -21,6 +26,7 @@ export class SistemaAudio {
     this.iniciado = false;
   }
 
+  // Cria os elementos de audio apenas depois de uma interacao do usuario.
   iniciarComInteracao() {
     if (this.iniciado) return;
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -74,6 +80,7 @@ export class SistemaAudio {
   }
 
   async iniciarMotorEmLoop() {
+    // Usa duas fontes do mesmo audio para deixar o motor em loop sem cortes bruscos.
     if (this.carregandoMotor || this.fontesMotor.length || !this.ctx) return;
     this.carregandoMotor = true;
     try {
@@ -102,6 +109,7 @@ export class SistemaAudio {
   }
 
   atualizar(estado) {
+    // Atualiza pitch e filtros do motor conforme o estado atual do voo.
     if (!this.iniciado || !this.ctx) return;
     this.ctx.resume?.();
 

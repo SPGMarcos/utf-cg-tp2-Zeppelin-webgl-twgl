@@ -1,3 +1,8 @@
+/*
+  Modelo e comportamento do navio voador.
+  Este modulo controla movimento, pouso automatico, colisoes, animacao das
+  helices, luzes do veiculo e montagem visual das partes que formam o navio.
+*/
 import { criarTransformacao, multiplicarTransformacao, suavizarAtual, limitar } from "./util/matematica.js";
 
 function objeto(geometria, material, matriz, posicaoReferencia, extra = {}) {
@@ -35,6 +40,7 @@ export class Navio {
     this.tempoSobreZepellinPorto = 0;
   }
 
+  // Ao decolar, impede que o pouso automatico religue antes do navio sair da zona.
   alternarPouso(controles, cidade) {
     const deveDecolar = controles.pousoAutomatico || this.pousoContextual || this.noSolo || this.pousandoEm;
     if (deveDecolar) {
@@ -71,6 +77,7 @@ export class Navio {
     } else if (!this.bloqueioPousoContextual && !controles.pousoAutomatico) {
       this.tempoSobreZepellinPorto += dt;
     }
+    // Ativa o pouso contextual apenas depois que o navio permanece sobre o porto.
     this.pousoContextual = dentroDaZona && !this.bloqueioPousoContextual && this.tempoSobreZepellinPorto >= 2;
     const pousoAtivo = controles.pousoAutomatico || this.pousoContextual;
 
@@ -97,6 +104,7 @@ export class Navio {
       this.posicao[1],
       this.posicao[2] + frente[2] * this.velocidade * dt,
     ];
+    // Verifica se o navio pode ocupar a proxima posicao horizontal.
     this.aplicarColisaoHorizontal(proxima, cidade?.colisores || [], pousoAtivo);
 
     this.posicao[0] = limitar(this.posicao[0], -58, 58);
@@ -105,6 +113,7 @@ export class Navio {
     this.oscilacao += dt;
     const pertoDoSolo = Math.max(0, 1 - (this.posicao[1] - 2.2) / 5);
     const pousoEstavel = pousoAtivo || this.noSolo;
+    // Adiciona uma oscilacao leve durante o voo e remove essa oscilacao no pouso.
     const gravidadeLeve = pousoEstavel ? 0 : pertoDoSolo * 0.55;
     const boiar = pousoEstavel ? 0 : Math.sin(this.oscilacao * 1.35) * (0.18 - pertoDoSolo * 0.1);
     const proximaY = suavizarAtual(this.posicao[1], this.altitudeAlvo + boiar - gravidadeLeve, pousoAtivo ? 1.55 : 2.7, dt);
@@ -243,6 +252,7 @@ export class Navio {
   criarParte(lista, pai, geometria, material, transformacao, extra = {}) {
     const local = criarTransformacao(transformacao);
     const matriz = multiplicarTransformacao(pai, local);
+    // Guarda a posicao da parte para auxiliar ordenacao de transparencia e luzes.
     const ref = twgl.m4.transformPoint(matriz, [0, 0, 0]);
     lista.push(objeto(geometria, material, matriz, ref, extra));
     return matriz;

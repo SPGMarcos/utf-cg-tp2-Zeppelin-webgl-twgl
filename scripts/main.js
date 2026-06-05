@@ -1,3 +1,8 @@
+/*
+  Entrada principal da simulacao.
+  Este arquivo prepara WebGL, carrega modelos/texturas e inicia o loop
+  responsavel por atualizar controles, camera, cidade, navio, audio e renderizacao.
+*/
 import { Renderizador } from "./renderizador.js";
 import { carregarTexturas } from "./texturas.js";
 import { criarMateriais } from "./materiais.js";
@@ -31,11 +36,13 @@ async function iniciar() {
   const renderizador = new Renderizador(gl);
   await renderizador.iniciar();
 
+  // Registra as geometrias basicas usadas para montar partes simples da cena.
   renderizador.registrarGeometria("cubo", criarCubo());
   renderizador.registrarGeometria("plano", criarPlano(1, 18));
   renderizador.registrarGeometria("cilindro", criarCilindro(28));
   renderizador.registrarGeometria("esfera", criarEsfera(18, 36));
 
+  // Lista de modelos externos usados pela cidade e pelo navio.
   const modelos = {
     "kit_ship_pirate": "./assets/modelos/Navio/ship-pirate-large.obj",
     "kit_mast": "./assets/modelos/Navio/mast.obj",
@@ -82,6 +89,7 @@ async function iniciar() {
     "kit_car_truck": "./assets/modelos/Veiculos/truck.obj",
   };
 
+  // Carrega todos os modelos antes de iniciar a simulacao.
   await Promise.all(Object.entries(modelos).map(async ([nome, caminho]) => {
     const resposta = await fetch(caminho);
     if (!resposta.ok) throw new Error(`Falha ao carregar modelo: ${caminho}`);
@@ -105,9 +113,11 @@ async function iniciar() {
   let anterior = performance.now();
   function quadro(agora) {
     const tempo = agora * 0.001;
+    // Calcula o tempo entre frames, limitando saltos quando a aba fica pausada.
     const dt = Math.min(0.033, (agora - anterior) * 0.001);
     anterior = agora;
 
+    // Trata comandos que acontecem uma unica vez, como alternar luz ou pouso.
     for (const evento of controles.consumirEventos()) {
       if (evento === "luz") iluminacao.alternarLuz();
       if (evento === "fog") iluminacao.alternarFog();
@@ -140,6 +150,7 @@ async function iniciar() {
       ...objetosNavio,
     ];
 
+    // Desenha todos os objetos usando o mesmo estado de camera, luz e materiais.
     renderizador.desenharObjetos(objetos, {
       view: camera.view,
       projection: camera.projection,

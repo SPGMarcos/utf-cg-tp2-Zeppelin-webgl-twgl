@@ -1,3 +1,8 @@
+/*
+  Geracao de geometrias primitivas.
+  Este modulo cria plano, cubo, cilindro e esfera diretamente em arrays,
+  permitindo montar partes simples da cena sem depender de modelos externos.
+*/
 function empurrarVertice(arrays, p, n, uv, t = [1, 0, 0]) {
   arrays.position.push(...p);
   arrays.normal.push(...n);
@@ -16,6 +21,7 @@ function finalizar(arrays) {
 }
 
 export function criarPlano(tamanho = 1, repeticao = 1) {
+  // Cria um plano horizontal usado como base para chao e superficies simples.
   const t = tamanho / 2;
   const arrays = { position: [], normal: [], texcoord: [], tangent: [], indices: [] };
   empurrarVertice(arrays, [-t, 0, -t], [0, 1, 0], [0, 0]);
@@ -26,6 +32,7 @@ export function criarPlano(tamanho = 1, repeticao = 1) {
   return finalizar(arrays);
 }
 
+// Cria um cubo com normais e UVs separados por face.
 export function criarCubo() {
   const arrays = { position: [], normal: [], texcoord: [], tangent: [], indices: [] };
   const faces = [
@@ -47,6 +54,7 @@ export function criarCubo() {
   return finalizar(arrays);
 }
 
+// Cria um cilindro segmentado, usado em detalhes como troncos e pecas do navio.
 export function criarCilindro(segmentos = 24, tampas = true) {
   const arrays = { position: [], normal: [], texcoord: [], tangent: [], indices: [] };
   for (let i = 0; i <= segmentos; i++) {
@@ -82,6 +90,7 @@ export function criarCilindro(segmentos = 24, tampas = true) {
   return finalizar(arrays);
 }
 
+// Cria uma esfera parametrica usada em sombras, luzes e volumes arredondados.
 export function criarEsfera(latitudes = 16, longitudes = 32) {
   const arrays = { position: [], normal: [], texcoord: [], tangent: [], indices: [] };
   for (let y = 0; y <= latitudes; y++) {

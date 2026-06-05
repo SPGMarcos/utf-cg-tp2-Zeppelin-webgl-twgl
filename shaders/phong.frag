@@ -1,4 +1,9 @@
 #version 300 es
+/*
+  Fragment shader principal.
+  Calcula a cor final dos objetos usando textura, modelo de iluminacao Phong,
+  luzes pontuais, material emissivo, transparencia e neblina.
+*/
 precision highp float;
 
 struct LuzPontual {
@@ -56,7 +61,7 @@ vec3 normalComMapa() {
 vec3 phong(vec3 normalFinal, vec3 corMaterial) {
   vec3 n = normalize(normalFinal);
   vec3 viewDir = normalize(u_cameraPosition - v_posicaoMundo);
-  // Phong completo: ambiente + difuso + especular, com emissivo suave para neon.
+  // Soma ambiente, difuso e especular para formar a iluminacao Phong.
   vec3 ambiente = u_intensidadeAmbiente * corMaterial;
   vec3 acumulada = ambiente;
 

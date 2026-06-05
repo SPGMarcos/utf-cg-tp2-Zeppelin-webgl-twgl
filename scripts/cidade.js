@@ -1,3 +1,8 @@
+/*
+  Construtor da cidade da simulacao.
+  Este modulo monta o chao, ruas, predios, areas verdes, heliportos, decoracoes,
+  carros em movimento e colisores usados pelo navio.
+*/
 import { criarTransformacao, pseudoAleatorio } from "./util/matematica.js";
 
 function objeto(geometria, material, matriz, posicaoReferencia = [0, 0, 0], extra = {}) {
@@ -23,6 +28,7 @@ const AREAS_CORTE_RUA = [
   { minX: 4.5, maxX: 54, minZ: 6.5, maxZ: 54 },
 ];
 
+// Calcula o centro de uma quadra a partir do indice da malha urbana.
 function coordenadaLote(indice) {
   return (indice + (indice < 0 ? 0.5 : -0.5)) * ESPACAMENTO_RUA;
 }
@@ -42,6 +48,7 @@ export class Cidade {
     this.construir();
   }
 
+  // Monta a cidade em camadas, na ordem em que os objetos dependem uns dos outros.
   construir() {
     this.criarBase();
     this.criarRuasLowPoly();
@@ -99,6 +106,7 @@ export class Cidade {
 
       const corteInicio = eixo === "z" ? area.minZ : area.minX;
       const corteFim = eixo === "z" ? area.maxZ : area.maxX;
+      // Remove trechos de rua onde existem areas reservadas, como parques e bases.
       segmentos = segmentos.flatMap(([inicio, fim]) => [
         [inicio, Math.max(inicio, corteInicio)],
         [Math.min(fim, corteFim), fim],
@@ -176,6 +184,7 @@ export class Cidade {
     }
   }
 
+  // Usa uma semente fixa para manter a mesma cidade em todas as execucoes.
   criarQuarteiroesLowPoly() {
     const rnd = pseudoAleatorio(47112);
     const lotesBloqueados = new Set(["-3,-2", "-3,-3", "-2,-2", "2,1", "2,2", "3,1", "3,2"]);
@@ -200,6 +209,7 @@ export class Cidade {
   }
 
   registrarColisor(nome, x, y, z, sx, sy, sz, extra = {}) {
+    // Registra uma caixa de colisao usada pelo navio durante o voo.
     this.colisores.push({
       nome,
       min: [x - sx * 0.5, y - sy * 0.5, z - sz * 0.5],
@@ -208,6 +218,7 @@ export class Cidade {
     });
   }
 
+  // Guarda a area da base para impedir que a vegetacao seja criada sobre o concreto.
   criarBaseConcreto(x, z, sx, sz, rotacao = 0) {
     const c = Math.abs(Math.cos(rotacao));
     const s = Math.abs(Math.sin(rotacao));
@@ -343,6 +354,7 @@ export class Cidade {
   }
 
   criarDecoracoesLowPoly() {
+    // Define rotas simples para os carros circularem continuamente nas ruas.
     const rotas = [
       { eixo: "z", fixo: -0.72, faixa: "x", direcao: 1, velocidade: 4.2, quantidade: 4, fase: 0 },
       { eixo: "z", fixo: 0.72, faixa: "x", direcao: -1, velocidade: 4.2, quantidade: 4, fase: 0 },
@@ -378,6 +390,7 @@ export class Cidade {
 
   criarNatureKit(modelo, material, x, z, escala = 1, rotacao = 0, y = 0.05) {
     const margem = modelo.includes("tree") ? 5.4 : 4.35;
+    // Testa se a vegetacao pode ser posicionada sem invadir ruas, predios ou bases.
     if (!this.posicaoSeguraVegetacao(x, z, margem)) return false;
     if (modelo.includes("tree") && !this.espacoLivreParaArvore(x, z)) return false;
     if (modelo.includes("tree") && this.posicaoSobreConcreto(x, z, 0.35)) return false;
@@ -481,6 +494,7 @@ export class Cidade {
     this.criarCanteiroNature(x, z, raio * 1.45, raio * 1.15, rnd() * Math.PI);
 
     let arvoresCriadas = 0;
+    // Tenta posicionar arvores varias vezes, pois alguns pontos podem ser recusados.
     for (let tentativa = 0; tentativa < arvores * 6 && arvoresCriadas < arvores; tentativa++) {
       const angulo = rnd() * Math.PI * 2;
       const distancia = raio * (0.42 + rnd() * 0.82);
@@ -755,6 +769,7 @@ export class Cidade {
       const ciclo = this.atualizarProgressoCarro(carro, dt, tempo);
       const pos = [...carro.base];
       let rotY = 0;
+      // Converte o progresso do carro em posicao dentro da rua correspondente.
       if (carro.eixo === "z") {
         pos[2] = ciclo * carro.direcao;
         rotY = carro.direcao > 0 ? 0 : Math.PI;

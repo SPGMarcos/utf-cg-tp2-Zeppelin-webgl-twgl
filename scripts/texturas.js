@@ -1,3 +1,8 @@
+/*
+  Criacao e carregamento de texturas.
+  Este modulo gera texturas procedurais em canvas e tambem carrega texturas
+  externas dos kits de modelos usados na cena.
+*/
 function criarCanvasTextura(tamanho, desenho) {
   const canvas = document.createElement("canvas");
   canvas.width = tamanho;
@@ -29,6 +34,7 @@ function texturaArquivo(gl, caminho) {
 }
 
 export async function carregarTexturas(gl) {
+  // Cria todas as texturas usadas pelos materiais do projeto.
   const branco = criarCanvasTextura(4, (ctx, t) => {
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, t, t);

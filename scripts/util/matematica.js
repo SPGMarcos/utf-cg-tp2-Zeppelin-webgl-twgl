@@ -1,3 +1,8 @@
+/*
+  Funcoes matematicas auxiliares.
+  Este modulo concentra operacoes usadas em movimento, interpolacao,
+  transformacoes de objetos e geracao deterministica de valores aleatorios.
+*/
 export function limitar(valor, minimo, maximo) {
   return Math.max(minimo, Math.min(maximo, valor));
 }
@@ -6,6 +11,7 @@ export function misturar(a, b, t) {
   return a + (b - a) * t;
 }
 
+// Aproxima um valor do alvo de forma suave e independente da taxa de frames.
 export function suavizarAtual(valor, alvo, rigidez, dt) {
   const t = 1 - Math.exp(-rigidez * dt);
   return misturar(valor, alvo, t);
@@ -32,6 +38,7 @@ export function escalar(v, s) {
   return [v[0] * s, v[1] * s, v[2] * s];
 }
 
+// Gera numeros pseudoaleatorios repetiveis a partir de uma semente.
 export function pseudoAleatorio(seed) {
   let estado = seed >>> 0;
   return () => {
@@ -40,6 +47,7 @@ export function pseudoAleatorio(seed) {
   };
 }
 
+// Cria uma matriz de transformacao com posicao, rotacao e escala.
 export function criarTransformacao({ posicao = [0, 0, 0], rotacao = [0, 0, 0], escala = [1, 1, 1] } = {}) {
   const m4 = twgl.m4;
   let m = m4.identity();

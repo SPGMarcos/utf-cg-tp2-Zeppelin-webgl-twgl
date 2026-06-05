@@ -1,3 +1,8 @@
+/*
+  Renderizador WebGL da simulacao.
+  Este modulo carrega shaders, guarda geometrias, desenha a skybox e renderiza
+  os objetos da cena com iluminacao Phong, fog, texturas e transparencia.
+*/
 import { carregarPrograma } from "./shaders.js";
 
 export class Renderizador {
@@ -43,6 +48,7 @@ export class Renderizador {
       [gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, `${base}/interstellar_ft.png`],
     ];
 
+    // Cria uma cor temporaria para a skybox enquanto as imagens terminam de carregar.
     for (const [alvo] of faces) {
       gl.texImage2D(alvo, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([120, 145, 160, 255]));
     }
@@ -80,6 +86,7 @@ export class Renderizador {
   desenharObjetos(objetos, contexto) {
     const opacos = [];
     const transparentes = [];
+    // Separa objetos opacos e transparentes para desenhar vidro e hologramas corretamente.
     for (const obj of objetos) {
       const mat = contexto.materiais[obj.material];
       const alpha = obj.alpha ?? mat.alpha ?? mat.cor?.[3] ?? 1;
@@ -102,6 +109,7 @@ export class Renderizador {
     if (!geo || !this.texturaSkybox) return;
 
     const viewSemTranslacao = [...contexto.view];
+    // Remove o deslocamento da camera para a skybox ficar sempre ao redor da cena.
     viewSemTranslacao[12] = 0;
     viewSemTranslacao[13] = 0;
     viewSemTranslacao[14] = 0;
@@ -161,6 +169,7 @@ export class Renderizador {
       u_totalLuzesPontuais: contexto.iluminacao.luzesPontuais.length,
     };
 
+    // Envia ate 12 luzes pontuais para o shader, preenchendo as restantes com luz apagada.
     for (let i = 0; i < 12; i++) {
       const luz = contexto.iluminacao.luzesPontuais[i] || { posicao: [0, 0, 0], cor: [0, 0, 0], intensidade: 0 };
       uniforms[`u_luzesPontuais[${i}].posicao`] = luz.posicao;

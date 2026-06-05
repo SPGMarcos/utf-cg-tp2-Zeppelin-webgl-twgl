@@ -1,4 +1,8 @@
 #version 300 es
+/*
+  Fragment shader das particulas.
+  Desenha cada ponto como uma particula circular com borda suave e transparencia.
+*/
 precision highp float;
 
 in vec4 v_color;

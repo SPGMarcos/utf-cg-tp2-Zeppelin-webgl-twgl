@@ -1,4 +1,8 @@
 #version 300 es
+/*
+  Vertex shader das particulas.
+  Posiciona cada ponto de fumaca na tela e ajusta seu tamanho conforme a distancia.
+*/
 
 in vec4 position;
 in vec4 color;
