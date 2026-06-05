@@ -12,8 +12,8 @@ export function calcularCorCeu(tempo) {
   ];
 }
 
+// Mostra informacoes resumidas da camera, altitude, distancia e efeitos ativos.
 export function atualizarStatusCamera(elemento, nomeCamera, navio, luz, fog) {
-  // Mostra informacoes resumidas da camera, altitude, distancia e efeitos ativos.
   if (!elemento) return;
   const altitude = navio.posicao[1].toFixed(1).replace(".", ",");
   const distancia = Math.hypot(navio.posicao[0], navio.posicao[2]).toFixed(0);
