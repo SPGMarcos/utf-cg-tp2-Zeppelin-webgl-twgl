@@ -340,6 +340,3 @@ Os pacotes disponibilizados pela Kenney são distribuídos sob licença CC0, per
 A textura Interstellar Skybox é distribuída sob licença CC-BY 3.0, exigindo atribuição ao autor original.
 
 
-## Licença
-
-Projeto desenvolvido exclusivamente para fins acadêmicos na disciplina de Computação Gráfica.
