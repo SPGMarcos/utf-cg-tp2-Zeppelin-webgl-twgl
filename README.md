@@ -5,18 +5,15 @@ Projeto desenvolvido para a disciplina de Computação Gráfica utilizando WebGL
 A aplicação apresenta uma cidade futurista low-poly iluminada por luzes neon, onde o jogador controla um navio voador steampunk capaz de explorar livremente o cenário através de diferentes modos de câmera.
 
 
-
 ## Autor
 
 **Marcos Gabriel Ferreira Miranda**
-
 
 
 ## Demonstração
 
 [Video no YouTube
 ](https://www.youtube.com/watch?v=o8lj3mnNIoo)
-
 
 
 ## Objetivo do Projeto
@@ -35,7 +32,6 @@ Desenvolver uma cena tridimensional interativa utilizando WebGL, aplicando conce
 * Colisões e Interação com Objetos
 
 
-
 ## Tecnologias Utilizadas
 
 * HTML5
@@ -45,7 +41,6 @@ Desenvolver uma cena tridimensional interativa utilizando WebGL, aplicando conce
 * TWGL.js
 * GLSL (Vertex e Fragment Shaders)
 * Web Audio API
-
 
 
 ## Como Executar
@@ -67,7 +62,6 @@ Depois acesse:
 ```text
 http://127.0.0.1:5500/
 ```
-
 
 
 ## Controles
@@ -102,79 +96,11 @@ http://127.0.0.1:5500/
 | P     | Pousar ou decolar                 |
 | Setas | Olhar ao redor no cockpit         |
 
-O pouso também acontece automaticamente quando o navio permanece por 2 segundos sobre o ZeppelinPorto.
-
-
-
-## Recursos Implementados
-
-### Modelagem
-
-✔ Modelagem hierárquica do navio
-
-✔ Estruturas urbanas low-poly
-
-✔ Hangares e heliportos
-
-✔ Sistema modular de primitivas geométricas
-
-✔ Suporte para modelos OBJ
-
-
-
-### Iluminação e Materiais
-
-✔ Iluminação Phong
-
-✔ Luz direcional principal
-
-✔ Múltiplas luzes pontuais
-
-✔ Materiais emissivos
-
-✔ Transparência
-
-✔ Normal Mapping
-
-✔ Luzes neon animadas
-
-
-
-### Efeitos Visuais
-
-✔ Sistema de partículas para fumaça
-
-✔ Neblina dinâmica (Fog)
-
-✔ Skybox espacial
-
-✔ Texturas procedurais
-
-✔ Animações em tempo real
-
-✔ Hélices rotativas
-
-
-
-### Interatividade
-
-✔ Controle completo do navio
-
-✔ Sistema de pouso automático
-
-✔ Colisão com edifícios
-
-✔ Diferentes modos de câmera
-
-✔ Áudio ambiente
-
-✔ Som dinâmico do motor
-
-
+O pouso também acontece automaticamente quando o navio permanece por 2 segundos sobre o ZeppelinPorto Principal.
 
 ### Itens Adicionais Implementados
 
-Com base na lista de funcionalidades extras proposta para o trabalho, este projeto implementa:
+Com base na lista de funcionalidades extras proposta para o trabalho, foi implementado nesse projeto:
 
 ✔ Skybox espacial
 
@@ -192,7 +118,7 @@ Com base na lista de funcionalidades extras proposta para o trabalho, este proje
 
 ✔ Cabine com material transparente
 
-✔ Sistema de pouso automático, ativável pela tecla `P` ou ao permanecer 2 segundos sobre o ZeppelinPorto
+✔ Sistema de pouso automático, ativável pela tecla `P`
 
 ✔ Terceira câmera em modo cockpit, ativável pela tecla `3`
 
