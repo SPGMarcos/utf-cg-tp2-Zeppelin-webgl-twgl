@@ -14,7 +14,7 @@ A aplicação apresenta uma cidade futurista low-poly iluminada por luzes neon, 
 
 ## Demonstração
 
-[Video no YouTube:
+[Video no YouTube
 ](https://www.youtube.com/watch?v=o8lj3mnNIoo)
 
 
