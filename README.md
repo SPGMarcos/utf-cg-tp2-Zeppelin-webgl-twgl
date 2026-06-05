@@ -4,7 +4,7 @@ Projeto desenvolvido para a disciplina de Computação Gráfica utilizando WebGL
 
 A aplicação apresenta uma cidade futurista low-poly iluminada por luzes neon, onde o jogador controla um navio voador steampunk capaz de explorar livremente o cenário através de diferentes modos de câmera.
 
----
+
 
 ## Autor
 
@@ -15,8 +15,8 @@ A aplicação apresenta uma cidade futurista low-poly iluminada por luzes neon, 
 ## Demonstração
 
 ```text
-https://youtube.com/SEU_VIDEO
-```
+[Video no YouTube:
+](https://www.youtube.com/watch?v=o8lj3mnNIoo)```
 
 ---
 
@@ -35,7 +35,7 @@ Desenvolver uma cena tridimensional interativa utilizando WebGL, aplicando conce
 * Animações em Tempo Real
 * Colisões e Interação com Objetos
 
----
+
 
 ## Tecnologias Utilizadas
 
@@ -47,7 +47,7 @@ Desenvolver uma cena tridimensional interativa utilizando WebGL, aplicando conce
 * GLSL (Vertex e Fragment Shaders)
 * Web Audio API
 
----
+
 
 ## Como Executar
 
@@ -69,7 +69,7 @@ Depois acesse:
 http://127.0.0.1:5500/
 ```
 
----
+
 
 ## Controles
 
@@ -103,7 +103,7 @@ http://127.0.0.1:5500/
 | P     | Pousar ou decolar                 |
 | Setas | Olhar ao redor no cockpit         |
 
----
+
 
 ## Recursos Implementados
 
@@ -119,7 +119,7 @@ http://127.0.0.1:5500/
 
 ✔ Suporte para modelos OBJ
 
----
+
 
 ### Iluminação e Materiais
 
@@ -137,7 +137,7 @@ http://127.0.0.1:5500/
 
 ✔ Luzes neon animadas
 
----
+
 
 ### Efeitos Visuais
 
@@ -153,7 +153,7 @@ http://127.0.0.1:5500/
 
 ✔ Hélices rotativas
 
----
+
 
 ### Interatividade
 
@@ -169,7 +169,7 @@ http://127.0.0.1:5500/
 
 ✔ Som dinâmico do motor
 
----
+
 
 ## Estrutura do Projeto
 
@@ -234,7 +234,7 @@ projeto/
 └── index.html
 ```
 
----
+
 
 ## Conceitos de Computação Gráfica Aplicados
 
@@ -270,7 +270,7 @@ Utilizado para simular fumaça e efeitos atmosféricos do navio.
 
 Foi implementado um sistema de colisão baseado em AABB (Axis-Aligned Bounding Boxes), impedindo que o navio atravesse prédios, hangares e outras estruturas da cidade.
 
----
+
 
 ## Destaques do Projeto
 
@@ -291,7 +291,7 @@ Foi implementado um sistema de colisão baseado em AABB (Axis-Aligned Bounding B
 * Carregamento modular de modelos OBJ
 * Suporte para expansão com novos assets e cenários
 
----
+
 
 ## Créditos e Recursos Utilizados
 
@@ -366,7 +366,6 @@ Os pacotes disponibilizados pela Kenney são distribuídos sob licença CC0, per
 
 A textura Interstellar Skybox é distribuída sob licença CC-BY 3.0, exigindo atribuição ao autor original.
 
----
 
 ## Licença
 
